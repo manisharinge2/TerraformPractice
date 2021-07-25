@@ -1,32 +1,26 @@
 //This can be copied to your main.tf file. File should be inside a folder where terraform is initialized.
 
-resource "aws_cloudformation_stack" "network" {
-  name = "networking-stack"
-
-  parameters = {
-    VPCCidr = "10.0.0.0/16"
-  }
-
-  template_body = <<STACK
-{
-  "Parameters" : {
-    "VPCCidr" : {
-      "Type" : "String",
-      "Default" : "10.0.0.0/16",
-      "Description" : "Enter the CIDR block for the VPC. Default is 10.0.0.0/16."
-    }
-  },
-  "Resources" : {
-    "myVpc": {
-      "Type" : "AWS::EC2::VPC",
-      "Properties" : {
-        "CidrBlock" : { "Ref" : "VPCCidr" },
-        "Tags" : [
-          {"Key": "Name", "Value": "Primary_CF_VPC"}
-        ]
-      }
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.27"
     }
   }
+
+  required_version = ">= 0.14.9"
 }
-STACK
+
+provider "aws" {
+  profile = "default"
+  region  = "us-east-1"
+}
+
+resource "aws_instance" "app_server" {
+  ami           = "ami-0dc2d3e4c0f9ebd18"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "MyTerraformTestInstance"
+  }
 }
