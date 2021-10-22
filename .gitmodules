@@ -1,0 +1,3 @@
+[submodule "side-repo"]
+	path = side-repo
+	url = https://github.com/manisharinge2/side-repo.git
