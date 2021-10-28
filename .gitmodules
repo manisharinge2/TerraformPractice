@@ -1,6 +1,6 @@
-[submodule "side-repo"]
-	path = side-repo
-	url = https://github.com/manisharinge2/side-repo.git
 [submodule "aws-cloudformation-templates"]
 	path = aws-cloudformation-templates
 	url = https://github.com/manisharinge2/aws-cloudformation-templates.git
+[submodule "deploy/side-repo"]
+	path = deploy/side-repo
+	url = https://github.com/manisharinge2/side-repo

@@ -1,0 +1,78 @@
+{
+    "pipeline": {
+        "name": "artifacts-test",
+        "roleArn": "arn:aws:iam::380574440275:role/service-role/AWSCodePipelineServiceRole-us-east-1-artifacts-test",
+        "artifactStore": {
+            "type": "S3",
+            "location": "artifactsbucketmr"
+        },
+        "stages": [
+            {
+                "name": "Source",
+                "actions": [
+                    {
+                        "name": "Source",
+                        "actionTypeId": {
+                            "category": "Source",
+                            "owner": "ThirdParty",
+                            "provider": "GitHub",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "Branch": "main",
+                            "OAuthToken": "****",
+                            "Owner": "manisharinge2",
+                            "PollForSourceChanges": "false",
+                            "Repo": "private-repo"
+                        },
+                        "outputArtifacts": [
+                            {
+                                "name": "SourceArtifact"
+                            }
+                        ],
+                        "inputArtifacts": [],
+                        "region": "us-east-1",
+                        "namespace": "SourceVariables"
+                    }
+                ]
+            },
+            {
+                "name": "Build",
+                "actions": [
+                    {
+                        "name": "Build",
+                        "actionTypeId": {
+                            "category": "Build",
+                            "owner": "AWS",
+                            "provider": "CodeBuild",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "ProjectName": "ECS-CB"
+                        },
+                        "outputArtifacts": [
+                            {
+                                "name": "BuildArtifact"
+                            }
+                        ],
+                        "inputArtifacts": [
+                            {
+                                "name": "SourceArtifact"
+                            }
+                        ],
+                        "region": "us-east-1",
+                        "namespace": "BuildVariables"
+                    }
+                ]
+            }
+        ],
+        "version": 2
+    },
+    "metadata": {
+        "pipelineArn": "arn:aws:codepipeline:us-east-1:380574440275:artifacts-test",
+        "created": "2021-10-04T12:22:50.849000+05:30",
+        "updated": "2021-10-26T15:47:05.889000+05:30"
+    }
+}

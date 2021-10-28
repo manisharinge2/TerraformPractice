@@ -1,0 +1,17 @@
+{
+    "webhook": {
+        "name": "my-webhook-artifacts-test",
+        "targetPipeline": "artifacts-test",
+        "targetAction": "source_action_name",
+        "filters": [
+            {
+                "jsonPath": "$.ref",
+                "matchEquals": "refs/heads/{Branch}"
+            }
+        ],
+        "authentication": "GITHUB_HMAC",
+        "authenticationConfiguration": {
+            "SecretToken": "secret-for-cp"
+        }
+    }
+}

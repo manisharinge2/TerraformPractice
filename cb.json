@@ -1,0 +1,70 @@
+{
+    "projects": [
+        {
+            "name": "test-github-webhook",
+            "arn": "arn:aws:codebuild:us-east-1:380574440275:project/test-github-webhook",
+            "source": {
+                "type": "GITHUB",
+                "location": "https://github.com/manisharinge2/aws-cloudformation-templates.git",
+                "gitCloneDepth": 1,
+                "gitSubmodulesConfig": {
+                    "fetchSubmodules": false
+                },
+                "buildspec": "version: 0.2\nphases:\n  build:\n    commands:\n      - echo hello\n      ",
+                "reportBuildStatus": false,
+                "insecureSsl": false
+            },
+            "secondarySources": [],
+            "secondarySourceVersions": [],
+            "artifacts": {
+                "type": "NO_ARTIFACTS"
+            },
+            "secondaryArtifacts": [],
+            "cache": {
+                "type": "NO_CACHE"
+            },
+            "environment": {
+                "type": "LINUX_CONTAINER",
+                "image": "aws/codebuild/amazonlinux2-x86_64-standard:3.0",
+                "computeType": "BUILD_GENERAL1_SMALL",
+                "environmentVariables": [],
+                "privilegedMode": false,
+                "imagePullCredentialsType": "CODEBUILD"
+            },
+            "serviceRole": "arn:aws:iam::380574440275:role/service-role/codebuild-test-github-webhook-service-role",
+            "timeoutInMinutes": 60,
+            "queuedTimeoutInMinutes": 480,
+            "encryptionKey": "arn:aws:kms:us-east-1:380574440275:alias/aws/s3",
+            "tags": [],
+            "created": "2021-10-26T14:55:07.848000+05:30",
+            "lastModified": "2021-10-26T14:55:08.426000+05:30",
+            "webhook": {
+                "url": "https://api.github.com/repos/manisharinge2/aws-cloudformation-templates/hooks/325279316",
+                "payloadUrl": "https://codebuild.us-east-1.amazonaws.com/webhooks?t=eyJlbmNyeXB0ZWREYXRhIjoid2QvNVVWeHMyZDRnMlE3MlhoSWpHR3BzMDhxR2N3N255T0wrZlpFbmROT012dzU0dCtmSlorcUNmK3JSeVNUMWlBeFJCWFh2dm9OaWF3aGh0SzBsSXIwPSIsIml2UGFyYW1ldGVyU3BlYyI6IkZHbTZha3Y5d1VyS1BZbDkiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&v=1",
+                "filterGroups": [
+                    [
+                        {
+                            "type": "EVENT",
+                            "pattern": "PUSH",
+                            "excludeMatchedPattern": false
+                        }
+                    ]
+                ],
+                "buildType": "BUILD"
+            },
+            "badge": {
+                "badgeEnabled": false
+            },
+            "logsConfig": {
+                "cloudWatchLogs": {
+                    "status": "ENABLED"
+                },
+                "s3Logs": {
+                    "status": "DISABLED",
+                    "encryptionDisabled": false
+                }
+            }
+        }
+    ],
+    "projectsNotFound": []
+}
