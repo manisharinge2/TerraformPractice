@@ -3,4 +3,4 @@
 	url = https://github.com/manisharinge2/aws-cloudformation-templates.git
 [submodule "deploy/side-repo"]
 	path = deploy/side-repo
-	url = ../side-repo
+	url = https://github.com/manisharinge2/side-repo
