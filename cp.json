@@ -1,39 +1,37 @@
 {
     "pipeline": {
-        "name": "artifacts-test",
-        "roleArn": "arn:aws:iam::380574440275:role/service-role/AWSCodePipelineServiceRole-us-east-1-artifacts-test",
+        "name": "Polling-Pipeline",
+        "roleArn": "arn:aws:iam::380574440275:role/service-role/AWSCodePipelineServiceRole-us-east-1-Polling-Pipeline",
         "artifactStore": {
             "type": "S3",
-            "location": "artifactsbucketmr"
+            "location": "codepipeline-us-east-1-212811950285"
         },
         "stages": [
             {
                 "name": "Source",
                 "actions": [
                     {
-                        "name": "Source",
+                        "name": "source",
                         "actionTypeId": {
                             "category": "Source",
-                            "owner": "ThirdParty",
-                            "provider": "GitHub",
+                            "owner": "AWS",
+                            "provider": "S3",
                             "version": "1"
                         },
                         "runOrder": 1,
                         "configuration": {
-                            "Branch": "main",
-                            "OAuthToken": "****",
-                            "Owner": "manisharinge2",
                             "PollForSourceChanges": "false",
-                            "Repo": "private-repo"
+                            "S3Bucket": "bucket-for-codedeploy-demo",
+                            "S3ObjectKey": "deploy/Archive.zip"
                         },
                         "outputArtifacts": [
                             {
-                                "name": "SourceArtifact"
+                                "name": "S3SourceArtifact"
                             }
                         ],
                         "inputArtifacts": [],
-                        "region": "us-east-1",
-                        "namespace": "SourceVariables"
+                        "roleArn": "arn:aws:iam::380574440275:role/S3RoleForTTD31444874",
+                        "region": "us-east-1"
                     }
                 ]
             },
@@ -50,7 +48,7 @@
                         },
                         "runOrder": 1,
                         "configuration": {
-                            "ProjectName": "ECS-CB"
+                            "ProjectName": "UlimitTest"
                         },
                         "outputArtifacts": [
                             {
@@ -59,7 +57,7 @@
                         ],
                         "inputArtifacts": [
                             {
-                                "name": "SourceArtifact"
+                                "name": "S3SourceArtifact"
                             }
                         ],
                         "region": "us-east-1",
@@ -69,10 +67,5 @@
             }
         ],
         "version": 2
-    },
-    "metadata": {
-        "pipelineArn": "arn:aws:codepipeline:us-east-1:380574440275:artifacts-test",
-        "created": "2021-10-04T12:22:50.849000+05:30",
-        "updated": "2021-10-26T15:47:05.889000+05:30"
     }
 }
