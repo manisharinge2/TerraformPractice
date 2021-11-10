@@ -1,6 +1,6 @@
 [submodule "aws-cloudformation-templates"]
 	path = aws-cloudformation-templates
 	url = ../aws-cloudformation-templates.git
-[submodule "deploy/side-repo"]
-	path = deploy/side-repo
-	url = ../side-repo
+#[submodule "deploy/side-repo"]
+#	path = deploy/side-repo
+#	url = ../side-repo
