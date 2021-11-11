@@ -1,7 +1,7 @@
 
-[submodule "d/side-repo"]
+[submodule "side-repo"]
 	path = side-repo
 	url = https://github.com/manisharinge2/side-repo
-[submodule "deploy/vault/aws-cloudformation-templates"]
+[submodule "deploy/aws-cloudformation-templates"]
 	path = deploy/vault/aws-cloudformation-templates
 	url = https://github.com/manisharinge2/aws-cloudformation-templates
