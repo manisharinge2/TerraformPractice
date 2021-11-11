@@ -1,4 +1,4 @@
 
 [submodule "side-repo"]
-	path = side-repo
+	path = d/side-repo
 	url = https://github.com/manisharinge2/side-repo
